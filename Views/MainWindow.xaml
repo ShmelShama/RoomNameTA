@@ -1,0 +1,97 @@
+﻿<Window x:Class="RoomNumberTA.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RoomNumberTA.Views"
+        xmlns:viewModels="clr-namespace:RoomNumberTA.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance  viewModels:MainViewModel, IsDesignTimeCreatable=False}"
+        Title="Room_Number" Height="400" Width="400">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock  Grid.Row="0"
+                    Text="1. Выбор элементов категорий Трубы и Воздуховоды"
+                   VerticalAlignment="Top"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <TextBlock Grid.Column="0"
+                           Text="Выбрано элементов:">
+
+                </TextBlock>
+                <TextBlock Text="{Binding ElementsCount}"
+                           />
+            </StackPanel>
+            <Button Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Выбрать элементы"
+                    Command="{Binding SelectElementsCommand}"
+                    
+                    >
+                
+            </Button>
+            
+        </Grid>
+        <TextBlock  Grid.Row="1"
+              Text="2. Выбор параметра для заполнения"
+              VerticalAlignment="Top"/>
+        <ComboBox Grid.Row="1"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  MinWidth="200"
+                  ItemsSource="{Binding Parameters}"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="Name"
+                  SelectedItem="{Binding SelectedParameter}"
+                   IsEnabled="{Binding IsParamsEnabled}"/>
+        <TextBlock  Grid.Row="2"
+                    Text="3. Выбор элемента - источника параметра"
+                    VerticalAlignment="Top"/>
+        <Grid  Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                
+                       Text="{Binding SourceElemName}"/>
+            <Button Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Выбрать элемент источник"
+                    Command="{Binding SelectSourceCommand}"
+                     IsEnabled="{Binding IsSourceElemEnabled}"/>
+        </Grid>
+
+
+        <Button Grid.Row="3"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Content="Заполнить параметры"
+                IsEnabled="{Binding IsProcessEnabled}"
+                Command="{Binding StartProcessCommand}"/>    
+
+
+    </Grid>
+</Window>

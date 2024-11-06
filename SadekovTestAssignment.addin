@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Boba</Name>
+    <Assembly>SadekovTA\RoomNumberTA.dll</Assembly>
+    <FullClassName>RoomNumberTA.App</FullClassName>
+    <ClientId>dabcddc2-37dc-4aa6-ac79-29416815777e</ClientId>
+    <VendorId>Aboba</VendorId>
+    <VendorDescription>Aboba</VendorDescription>
+  </AddIn>
+</RevitAddIns>
